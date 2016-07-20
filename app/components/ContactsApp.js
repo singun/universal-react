@@ -1,4 +1,5 @@
 import React, { Component, PropTypes} from 'react';
+import fetch from 'isomorphic-fetch';
 import ContactList from './ContactList';
 import SearchBar from './SearchBar';
 
@@ -8,6 +9,16 @@ class ContactsApp extends Component {
     this.state = {
       contacts: this.props.initialData || [],
       filterText: ''
+    }
+  }
+
+  componentDidMount() {
+    if (!this.props.initialData) {
+      ContactsApp.requestInitialData().then(contacts => {
+        this.setState({
+          contacts
+        });
+      });
     }
   }
 
@@ -31,6 +42,11 @@ class ContactsApp extends Component {
 
 ContactsApp.propTypes = {
   initialData: PropTypes.any
+};
+
+ContactsApp.requestInitialData = () => {
+  return fetch('http://localhost:3000/contacts.json')
+  .then((response) => response.json());
 };
 
 export default ContactsApp;
