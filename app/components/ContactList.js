@@ -17,7 +17,7 @@ class ContactList extends Component {
 }
 
 ContactList.propTypes = {
-  contacts: PropTYpes.arrayOf(PropTypes.object),
+  contacts: PropTypes.arrayOf(PropTypes.object),
   filterText: PropTypes.string.isRequired
 }
 

@@ -3,10 +3,10 @@ import ContactList from './ContactList';
 import SearchBar from './SearchBar';
 
 class ContactsApp extends Component {
-  constructore() {
+  constructor() {
     super(...arguments);
     this.state = {
-      contacts: this.props.initinalData || [],
+      contacts: this.props.initialData || [],
       filterText: ''
     }
   }
@@ -30,7 +30,7 @@ class ContactsApp extends Component {
 }
 
 ContactsApp.propTypes = {
-  initinalData: PropTypes.any
+  initialData: PropTypes.any
 };
 
 export default ContactsApp;
